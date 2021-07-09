@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+    <div id="drawingPixel">
+        <!--사이드 바-->
+        <div id=siadBar>
+            <!-- <h1>도트그림판</h1> -->
+            <!-- 새로 그리기 -->
+            <div id="newDrawing">
+
+                <!--사이드 바 기능-->
+                <fieldset>
+                    <h3>캔 버 스</h3>
+                    <label class="size">
+                        <span> 가로 길이 </span>
+                        <input type="number" id="wsize" min="1" value="1">
+                    </label>
+                    <br>
+                    <label class="size">
+                        <span> 세로 길이 </span>
+                        <input type="number" id="hsize" min="1" value="1">
+                    </label>
+                    <br>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" OnClick="CreateCanvas()" id="create">
+                            <div>캔버스 생성</div>
+                            <div></div>
+                            <div>캔버스 생성</div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" OnClick="CanvasOpenTextFile()">
+                            <div>캔버스 불러오기</div>
+                            <div></div>
+                            <div>캔버스 불러오기</div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" OnClick="backgroundCanvasOpenTextFile()">
+                            <div>배경 불러오기</div>
+                            <div></div>
+                            <div>배경 불러오기</div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" OnClick="canvasSave()">
+                            <div>저장하기</div>
+                            <div></div>
+                            <div>저장하기</div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" class="SaveImageCanvas" type="button"
+                            class="btnScreenShot" id="btnScreenShot">
+                            <div>이미지 저장하기(캔버스만)</div>
+                            <div></div>
+                            <div>이미지 저장하기(캔버스만)</div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div class="button_base CreateCanvas" class="SaveImage" type="button" class="btnScreenShotB"
+                            id="btnScreenShotB">
+                            <div>전체 저장하기</div>
+                            <div></div>
+                            <div>전체 저장하기</div>
+                        </div>
+                    </div>
+
+                    <div id="img-out"></div>
+
+                </fieldset>
+
+                <br>
+
+            </div>
+            <!--팔래트-->
+            <div id="palette">
+                <fieldset>
+                    <h3>팔 레 트</h3>
+                    <div class='div-opacity'>
+                        <label>
+                            캔버스 투명도<input type="range" value=1 id="canvas-opacity" min="0" max="1" step="0.01">
+                        </label>
+                        <br>
+
+                        <label>
+                            도안 투명도<input type="range" value=1 id="image-opacity" min="0" max="1" step="0.01">
+                        </label>
+                        <br>
+                    </div>
+                    <label>
+                        브러쉬 색 : <input id="parllteColor" type="color">
+                    </label>
+                    <br>
+
+                    <label>
+                        윤곽선<input id="borderCheckbox" name="borderCheckbox" type="checkbox" checked>
+                    </label>
+                    <br>
+                    <!--썻던 색 저장-->
+                    <table class="tcolortable">
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color: rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color: rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                        <tr>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                            <td class="colortable" OnClick="changeColor(this)"
+                                style="background-color:  rgb(255, 255, 255);"></td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+
+
+            </div>
+        </div>
+            
+            <!--이미지-->
+            <div class="imgimgimg" id="imgimgimg">
+
+                    <!--캔버스-->
+                    <div class="canvas " id="canvas">
+                    </div>
+                    <!--도안-->
+                    <div class="backgroundCanvas" id="backgroundCanvas">
+                    </div>
+            </div>
+        </div>
+        <!-- js불러오기-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <!-- IE10, 11 지원을 위한 es6-promise -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+
+
+
+
+        <script src="index.js"></script>
+</body>
+
+</html>
